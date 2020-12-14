@@ -2,8 +2,15 @@
 
 echo "type name SOURCE networkobjects:"
 read Sname
+echo "type name DESTINATION networkobjects:"
+read Dname
+
 echo "type network for SOURCE networkobjects:"
 read Snetwork
+
+echo "type network for DESTINATION networkobjects:"
+read Dnetwork
+
 #network=$(cat ./networkfile)
 #testfile=$(./testfile)
 echo "{
@@ -23,12 +30,10 @@ echo "    ],
 }" >> testfile
 
 
-echo "type name DESTINATION networkobjects:"
-read Dname
-echo "type network for DESTINATION networkobjects:"
-read Dnetwork
-#network=$(cat ./networkfile)
-#testfile=$(./testfile)
+#echo "type name DESTINATION networkobjects:"
+#read Dname
+#echo "type network for DESTINATION networkobjects:"
+#read Dnetwork
 echo "{
 \""name"\": \""$Dname"\",
        \""literals"\": [
