@@ -1,24 +1,53 @@
 #!/bin/bash
 
-echo "type name networkobjects:"
-read name
-echo "type network for networkobjects:"
-read network
+echo "type name SOURCE networkobjects:"
+read Sname
+echo "type network for SOURCE networkobjects:"
+read Snetwork
 #network=$(cat ./networkfile)
 #testfile=$(./testfile)
 echo "{
-\""name"\": \""$name"\",
+\""name"\": \""$Sname"\",
        \""literals"\": [
-	        " 
-for i in $network
+	        " > testfile
+for i in $Snetwork
 do
    echo " {
           \""type"\": \""Network"\",
             \""value"\":\""$i"\"
-          }," 
+          },"  >> testfile
 done
 
 echo "    ],
     \""type"\": \""NetworkGroup"\"
-}"
+}" >> testfile
+
+
+echo "type name DESTINATION networkobjects:"
+read Dname
+echo "type network for DESTINATION networkobjects:"
+read Dnetwork
+#network=$(cat ./networkfile)
+#testfile=$(./testfile)
+echo "{
+\""name"\": \""$Dname"\",
+       \""literals"\": [
+                " >> testfile
+for i in $Dnetwork
+do
+   echo " {
+          \""type"\": \""Network"\",
+            \""value"\":\""$i"\"
+          }," >> testfile
+done
+
+echo "    ],
+    \""type"\": \""NetworkGroup"\"
+}" >> testfile
+
+
+for tbl in `cat testfile` 
+do 
+    echo "$tbl"
+done
 
